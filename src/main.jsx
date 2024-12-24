@@ -8,6 +8,7 @@ import MainLayout from './components/MainLayout'
 import AddBook from './pages/AddBook'
 import AllBooks from './pages/AllBooks'
 import UpdateBook from './pages/UpdateBook'
+import Home from './pages/Home'
 
 
 
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "/update-book/:id",
         element: <UpdateBook></UpdateBook>
+      },
+      {
+        path: "/",
+        element: <Home></Home>
       }
     ]
   }

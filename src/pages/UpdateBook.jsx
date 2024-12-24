@@ -35,7 +35,7 @@ const UpdateBook = () => {
     axios.put(`http://localhost:5000/books/${id}`, book)
       .then((response) => {
         alert("Book updated successfully!");
-        navigate("/all-books");
+        navigate("/books");
       })
       .catch((error) => console.error("Error updating book:", error));
   };
