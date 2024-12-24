@@ -5,6 +5,7 @@ import { RouterProvider } from 'react-router-dom'
 import { createBrowserRouter } from 'react-router-dom'
 import AuthProvider from './components/AuthProvider/AuthProvider'
 import MainLayout from './components/MainLayout'
+import AddBook from './pages/AddBook'
 
 
 
@@ -14,7 +15,8 @@ const router = createBrowserRouter([
     element: <MainLayout></MainLayout>,
     children: [
       {
-        path: "/"
+        path: "/add-book",
+        element: <AddBook></AddBook>
       }
     ]
   }
