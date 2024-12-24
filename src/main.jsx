@@ -6,6 +6,8 @@ import { createBrowserRouter } from 'react-router-dom'
 import AuthProvider from './components/AuthProvider/AuthProvider'
 import MainLayout from './components/MainLayout'
 import AddBook from './pages/AddBook'
+import AllBooks from './pages/AllBooks'
+import UpdateBook from './pages/UpdateBook'
 
 
 
@@ -17,6 +19,14 @@ const router = createBrowserRouter([
       {
         path: "/add-book",
         element: <AddBook></AddBook>
+      },
+      {
+        path: "/books",
+        element: <AllBooks></AllBooks>
+      },
+      {
+        path: "/update-book/:id",
+        element: <UpdateBook></UpdateBook>
       }
     ]
   }

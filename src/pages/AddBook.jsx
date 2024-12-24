@@ -57,7 +57,7 @@ const AddBook = () => {
     <div className="max-w-3xl mx-auto p-6">
       <h2 className="text-2xl font-bold text-center mb-6">Add a New Book</h2>
 
-      {/* Book Content Section */}
+      
       <div className="mb-6 bg-gray-100 p-4 rounded shadow-sm">
         
         <p className="text-sm text-gray-700">
@@ -68,7 +68,6 @@ const AddBook = () => {
         </p>
       </div>
 
-      {/* Add Book Form */}
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block text-sm font-medium mb-2">Image URL</label>
