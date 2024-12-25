@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, useContext } from "react";
 export const authContext = createContext();
 import {
   createUserWithEmailAndPassword,
@@ -10,34 +10,35 @@ import {
   updateProfile
 } from "firebase/auth";
 import auth from "../../firebase/firebase.config";
+
 const AuthProvider = ({ routes }) => {
-    const googleProvider = new GoogleAuthProvider()
+  const googleProvider = new GoogleAuthProvider();
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-    const [user,setUser] = useState(null)
-    const [loading,setLoading] = useState(true);
-
-    const handleRegister = (email, password, name, photoURL) => {
-        return createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
-          return updateProfile(userCredential.user, {
-            displayName: name,
-            photoURL,
-          });
-        });
-    
-    
+  const handleRegister = (email, password, name, photoURL) => {
+    return createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
+      return updateProfile(userCredential.user, {
+        displayName: name,
+        photoURL,
+      });
+    });
   };
+
   const handleLogin = (email, password) => {
-   return signInWithEmailAndPassword(auth, email, password);
+    return signInWithEmailAndPassword(auth, email, password);
   };
-  const handleGoogleLogin = () =>{
-   return signInWithPopup(auth,googleProvider)
-  }
 
-  const manageProfile = (name,image) =>{
-   return updateProfile(auth.currentUser,{
-        displayName:name,photoURL:image
-    })
-  }
+  const handleGoogleLogin = () => {
+    return signInWithPopup(auth, googleProvider);
+  };
+
+  const manageProfile = (name, image) => {
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: image
+    });
+  };
 
   const handleLogout = () => {
     signOut(auth);
@@ -52,34 +53,33 @@ const AuthProvider = ({ routes }) => {
     user,
     setUser,
     loading
-  }
+  };
 
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        setUser(currentUser);
+      } else {
+        setUser(null);
+      }
+      setLoading(false);
+    });
 
-  useEffect(()=>{
-    const unsubscribe = onAuthStateChanged(auth,(currentUser)=>{
-        console.log(currentUser)
-        if(currentUser){
-          setUser(currentUser)
-        }
-        else{
-          setUser(null)
-        }
-        setLoading(false)
-
-    return ()=>{
-        unsubscribe()
-    }
-    })
-  },[])
-
+    return () => {
+      unsubscribe();
+    };
+  }, []);
 
   return (
-    <div>
-      <authContext.Provider value={authInfo}>
-        {routes}
-      </authContext.Provider>
-    </div>
+    <authContext.Provider value={authInfo}>
+      {routes}
+    </authContext.Provider>
   );
+};
+
+// Custom hook to access the auth context
+export const useAuth = () => {
+  return useContext(authContext);
 };
 
 export default AuthProvider;

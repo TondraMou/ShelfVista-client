@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import ReactStars from "react-rating-stars-component";
 
 const Books = () => {
@@ -23,7 +23,9 @@ const Books = () => {
           <p className="text-gray-600">Category: {book.category}</p>
           <p className="text-gray-600">Quantity: {book.quantity}</p>
           <ReactStars value={book.rating} edit={false} />
-          <button className="btn btn-primary mt-4">Details</button>
+          <Link to={`/book-details/${book._id}`}>
+            <button className="btn btn-primary mt-4">Details</button>
+          </Link>
         </div>
       ))}
     </div>

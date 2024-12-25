@@ -12,6 +12,7 @@ import Home from './pages/Home'
 import Books from './components/Books'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import Details from './pages/Details'
 
 
 
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>
+      },
+      {
+        path: "/book-details/:id",
+        element: <Details></Details>
       }
     ]
   }

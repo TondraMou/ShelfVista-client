@@ -30,7 +30,7 @@ const BannerSlider = () => {
       infiniteLoop
       showThumbs={false}
       showStatus={false}
-      interval={3000}
+      interval={2000}
     >
       {slides.map((slide, index) => (
         <div key={index} className="relative w-11/12 mx-auto h-72 lg:h-96">
