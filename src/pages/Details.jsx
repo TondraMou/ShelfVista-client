@@ -33,22 +33,25 @@ const Details = () => {
   }, [id, loading, user, navigate]);
 
   const handleBorrow = () => {
-    
     if (book.quantity <= 0) {
       alert("No available copies to borrow.");
       return;
     }
-
-    
-    axios
-      .patch(`http://localhost:5000/books/borrow/${id}`, {
-        userId: user.id,
+  
+    fetch(`http://localhost:5000/borrow-book`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        bookId: id,
         userName: user.displayName,
         userEmail: user.email,
         returnDate,
-      })
-      .then((response) => {
-        const data = response.data;
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
         if (data.error) {
           alert(data.error);
         } else {
