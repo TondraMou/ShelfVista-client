@@ -13,6 +13,7 @@ import Books from './components/Books'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Details from './pages/Details'
+import BorrowedBooks from './pages/BorrowedBooks'
 
 
 
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
       {
         path: "/book-details/:id",
         element: <Details></Details>
+      },
+      {
+        path: "/borrowed-books",
+        element: <BorrowedBooks></BorrowedBooks>
       }
     ]
   }
