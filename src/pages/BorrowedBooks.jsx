@@ -1,52 +1,53 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../components/AuthProvider/AuthProvider"; 
 import { useNavigate } from "react-router-dom";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const BorrowedBooks = () => {
+  const axiosSecure = useAxiosSecure()
   const { user, loading } = useAuth(); 
   const [borrowedBooks, setBorrowedBooks] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (loading) return; 
+    if (loading) return;
 
     if (!user) {
-      navigate("/login"); 
+      navigate("/login");
       return;
     }
 
-    
-    fetch(`http://localhost:5000/borrowed-books/${user.email}`)
-      .then((response) => response.json())
-      .then((data) => setBorrowedBooks(data))
-      .catch((error) => {
-        console.error("Error fetching borrowed books:", error);
-      });
+    fetchBorrowedBooks(); 
   }, [loading, user, navigate]);
 
-  const handleReturn = (bookId) => {
-    fetch(`http://localhost:5000/borrowed-books/return/${bookId}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        userEmail: user.email, 
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.success) {
-          alert("Book returned successfully");
-          setBorrowedBooks(borrowedBooks.filter(book => book._id !== bookId)); 
-        } else {
-          alert("Failed to return the book");
-        }
-      })
-      .catch((error) => {
-        console.error("Error returning book:", error);
-      });
+  const fetchBorrowedBooks = async () => {
+    try {
+      const { data } = await axiosSecure.get(`/borrowed-books/${user?.email}`);
+      setBorrowedBooks(data);
+    } catch (error) {
+      console.error("Error fetching borrowed books:", error);
+    }
   };
+
+  const handleReturn = async (bookId) => {
+    try {
+      const { data } = await axiosSecure.put(`/borrowed-books/return/${bookId}`, {
+        userEmail: user.email, 
+      });
+
+      if (data.success) {
+        alert("Book returned successfully");
+        setBorrowedBooks((prevBooks) =>
+          prevBooks.filter((book) => book._id !== bookId)
+        );
+      } else {
+        alert("Failed to return the book");
+      }
+    } catch (error) {
+      console.error("Error returning book:", error);
+    }
+  };
+
 
   return (
     <div className="w-11/12 mx-auto p-4 mb-12">
