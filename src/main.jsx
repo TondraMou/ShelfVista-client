@@ -10,6 +10,7 @@ import AllBooks from './pages/AllBooks'
 import UpdateBook from './pages/UpdateBook'
 import Home from './pages/Home'
 import Books from './components/Books'
+import Login from './pages/Login'
 
 
 
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "/books/:category",
         element: <Books></Books>
+      },
+      {
+        path: "/login",
+        element: <Login></Login>
       }
     ]
   }
