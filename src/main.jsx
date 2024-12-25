@@ -9,6 +9,7 @@ import AddBook from './pages/AddBook'
 import AllBooks from './pages/AllBooks'
 import UpdateBook from './pages/UpdateBook'
 import Home from './pages/Home'
+import Books from './components/Books'
 
 
 
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>
+      },
+      {
+        path: "/books/:category",
+        element: <Books></Books>
       }
     ]
   }
