@@ -8,7 +8,7 @@ const Books = () => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/books/category/${category}`)
+    fetch(`https://books-server-eosin.vercel.app/books/category/${category}`)
       .then((response) => response.json())
       .then((data) => setBooks(data))
       .catch((error) => console.error("Error fetching books:", error));

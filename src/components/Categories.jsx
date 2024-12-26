@@ -6,7 +6,7 @@ const Categories = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('http://localhost:5000/category')
+    fetch('https://books-server-eosin.vercel.app/category')
       .then((response) => response.json())
       .then((data) => setCategories(data))
       .catch((error) => console.error("Error fetching categories:", error));

@@ -6,7 +6,7 @@ const LatestBooks = () => {
   useEffect(() => {
     const fetchLatestBooks = async () => {
       try {
-        const response = await fetch("http://localhost:5000/latest-books");
+        const response = await fetch("https://books-server-eosin.vercel.app/latest-books");
         const data = await response.json();
         setLatestBooks(data.slice(0, 4));
       } catch (error) {
