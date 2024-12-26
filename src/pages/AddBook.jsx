@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from "react-helmet-async";
 
 const AddBook = () => {
   const [formData, setFormData] = useState({
@@ -22,8 +22,15 @@ const AddBook = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const processedFormData = {
+      ...formData,
+      quantity: Number(formData.quantity),
+      rating: Number(formData.rating),
+    };
+
     try {
-      const response = await axiosSecure.post("/books", formData);
+      const response = await axiosSecure.post("/books", processedFormData);
       if (response.data.success) {
         Swal.fire({
           title: "Success!",
@@ -59,9 +66,7 @@ const AddBook = () => {
       </Helmet>
       <h2 className="text-2xl font-bold text-center mb-6">Add a New Book</h2>
 
-      
       <div className="mb-6 bg-gray-100 p-4 rounded shadow-sm">
-        
         <p className="text-sm text-gray-700">
           Add all the details about the book you want to share with our library
           community. Ensure the title, author, and category match the content

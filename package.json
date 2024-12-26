@@ -14,6 +14,7 @@
     "firebase": "^11.1.0",
     "framer-motion": "^11.15.0",
     "react": "^18.3.1",
+    "react-awesome-reveal": "^4.3.1",
     "react-dom": "^18.3.1",
     "react-helmet-async": "^2.0.5",
     "react-icons": "^5.4.0",
@@ -23,6 +24,8 @@
     "react-router-dom": "^6.28.1",
     "react-spinners": "^0.15.0",
     "react-toastify": "^11.0.2",
+    "react-tooltip": "^5.28.0",
+    "react-typewriter-effect": "^1.1.0",
     "sweetalert2": "^11.15.3",
     "swiper": "^11.1.15"
   },
