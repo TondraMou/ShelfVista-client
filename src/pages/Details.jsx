@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import Modal from "react-modal";
 import { useAuth } from "../components/AuthProvider/AuthProvider"; 
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import { Helmet } from 'react-helmet-async';
 
 const Details = () => {
   const { id } = useParams();
@@ -69,6 +70,9 @@ const Details = () => {
 
   return (
     <div className="w-11/12 mx-auto p-4 mb-12">
+      <Helmet>
+        <title>Book Details</title>
+      </Helmet>
       <div className="card shadow-lg p-6 flex flex-col md:flex-row">
        
         <div className="w-full md:w-1/3 mb-4 md:mb-0">

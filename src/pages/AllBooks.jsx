@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import ClipLoader from "react-spinners/ClipLoader";
+import { Helmet } from 'react-helmet-async';
 
 const AllBooks = () => {
   const [books, setBooks] = useState([]);
@@ -56,6 +57,9 @@ const AllBooks = () => {
 
   return (
     <div className="w-full max-w-7xl mx-auto p-4">
+       <Helmet>
+        <title>All Books</title>
+      </Helmet>
       <h1 className="text-2xl font-bold text-center mb-4">All Books</h1>
 
       <div className="flex flex-wrap justify-between mb-4">

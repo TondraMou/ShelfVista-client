@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import { authContext } from "../components/AuthProvider/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Helmet } from 'react-helmet-async';
 
 const Register = () => {
   const { handleRegister, handleGoogleLogin, manageProfile } = useContext(authContext);
@@ -90,6 +91,9 @@ const Register = () => {
 
   return (
     <div className="min-h-[800px] flex items-center justify-center">
+      <Helmet>
+              <title>Register</title>
+            </Helmet>
       <div className="bg-gray-200 dark:bg-gray-900 text-gray-700 dark:text-white p-8 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-3xl font-bold text-center text-[#4E6BFF] mb-6">Create an Account</h2>
         <form onSubmit={handleSubmit} className="space-y-4">

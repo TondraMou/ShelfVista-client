@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import ReactStars from "react-rating-stars-component";
+import { Helmet } from 'react-helmet-async';
 
 const Books = () => {
   const { category } = useParams();
@@ -15,6 +16,9 @@ const Books = () => {
 
   return (
     <div className="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-4">
+      <Helmet>
+              <title>Books by Category</title>
+            </Helmet>
       {books.map((book) => (
         <div key={book._id} className="card shadow-lg p-4">
           <img src={book.image} alt={book.name} className="w-full h-40 object-cover mb-4" />

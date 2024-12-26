@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { authContext } from "../components/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
+import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
   const { handleGoogleLogin, handleLogin } = useContext(authContext);
@@ -60,6 +61,9 @@ const Login = () => {
 
   return (
     <div className="flex items-center justify-center min-h-[600px]">
+      <Helmet>
+        <title>Login</title>
+      </Helmet>
       <div className="bg-gray-200 dark:bg-gray-900 text-gray-700 dark:text-gray-100 p-8 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-3xl text-[#4E6BFF] font-bold text-center mb-6">
           Sign in to your Account

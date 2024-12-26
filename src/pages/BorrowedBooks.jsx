@@ -3,6 +3,7 @@ import { useAuth } from "../components/AuthProvider/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import ClipLoader from "react-spinners/ClipLoader";
+import { Helmet } from 'react-helmet-async';
 
 const BorrowedBooks = () => {
   const axiosSecure = useAxiosSecure();
@@ -63,6 +64,9 @@ const BorrowedBooks = () => {
 
   return (
     <div className="w-11/12 mx-auto p-4 mb-12">
+      <Helmet>
+              <title>Your Borrowed Books</title>
+            </Helmet>
       <h2 className="text-2xl font-bold text-center mb-4">Borrowed Books</h2>
       {borrowedBooks.length === 0 ? (
         <p>No borrowed books found.</p>

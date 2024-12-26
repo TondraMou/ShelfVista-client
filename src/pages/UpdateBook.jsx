@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import { Helmet } from 'react-helmet-async'; 
 
 const UpdateBook = () => {
   const [book, setBook] = useState({
@@ -56,6 +57,9 @@ const UpdateBook = () => {
 
   return (
     <div className="w-11/12 mx-auto p-4">
+      <Helmet>
+        <title>Update Book</title>
+      </Helmet>
       <h1 className="text-2xl font-bold text-center mb-4">Update Book</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>

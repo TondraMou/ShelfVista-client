@@ -16,6 +16,7 @@ import Details from './pages/Details'
 import BorrowedBooks from './pages/BorrowedBooks'
 import PrivateRoute from './components/PrivateRoute/PrivateRoute'
 import Error from './components/Error'
+import { HelmetProvider } from 'react-helmet-async';
 
 
 
@@ -67,7 +68,9 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <HelmetProvider>
     <AuthProvider routes={<RouterProvider router={router}></RouterProvider>}>
     </AuthProvider>
+    </HelmetProvider>
   </StrictMode>,
 )

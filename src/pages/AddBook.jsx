@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { Helmet } from 'react-helmet-async';
 
 const AddBook = () => {
   const [formData, setFormData] = useState({
@@ -53,6 +54,9 @@ const AddBook = () => {
 
   return (
     <div className="max-w-3xl mx-auto p-6">
+      <Helmet>
+        <title>Add a Book</title>
+      </Helmet>
       <h2 className="text-2xl font-bold text-center mb-6">Add a New Book</h2>
 
       
