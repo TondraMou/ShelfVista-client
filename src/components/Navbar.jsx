@@ -36,12 +36,12 @@ const Navbar = () => {
   );
 
   return (
-    <nav className="bg-gray-800 text-white">
+    <nav className="bg-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           
           <div className="flex-shrink-0">
-            <Link to="/" className="text-xl font-bold hover:text-blue-400">
+            <Link to="/" className="text-xl font-bold text-[#4E6BFF]">
             ShelfVista
             </Link>
           </div>
@@ -57,13 +57,13 @@ const Navbar = () => {
               <>
                 <NavLink
                   to="/login"
-                  className="hover:text-blue-500 px-3 py-2"
+                  className="btn btn-outline btn-info px-3 py-2"
                 >
                   Login
                 </NavLink>
                 <NavLink
                   to="/register"
-                  className="hover:text-blue-500 px-3 py-2"
+                  className="btn btn-outline btn-info px-3 py-2"
                 >
                   Sign Up
                 </NavLink>
@@ -85,7 +85,7 @@ const Navbar = () => {
                 
                 <button
                   onClick={handleSignOut}
-                  className="hover:text-red-500 px-3 py-2"
+                  className="btn btn-outline btn-info px-3 py-2"
                 >
                   Logout
                 </button>
@@ -97,7 +97,7 @@ const Navbar = () => {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-200 hover:text-white focus:outline-none"
+              className="text-black focus:outline-none"
             >
               {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
             </button>
@@ -107,7 +107,7 @@ const Navbar = () => {
 
       
       {isOpen && (
-        <div className="md:hidden bg-gray-800">
+        <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 flex flex-col items-start">
             {navLinks}
           </div>
@@ -116,14 +116,14 @@ const Navbar = () => {
               <>
                 <NavLink
                   to="/login"
-                  className="text-gray-200 hover:text-blue-400 px-3 py-2"
+                  className="text-gray-200 btn btn-outline btn-info px-3 py-2"
                   onClick={() => setIsOpen(false)}
                 >
                   Login
                 </NavLink>
                 <NavLink
                   to="/register"
-                  className="text-gray-200 hover:text-blue-400 px-3 py-2"
+                  className="text-gray-200 btn btn-outline btn-info px-3 py-2"
                   onClick={() => setIsOpen(false)}
                 >
                   Sign Up
@@ -135,7 +135,7 @@ const Navbar = () => {
                   handleSignOut();
                   setIsOpen(false);
                 }}
-                className="text-gray-200 hover:text-red-400 px-3 py-2"
+                className="btn btn-outline btn-info px-3 py-2"
               >
                 Logout
               </button>

@@ -65,7 +65,7 @@ const AllBooks = () => {
       <div className="flex flex-wrap justify-between mb-4">
         <button
           onClick={handleFilterAvailable}
-          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 mb-2 sm:mb-0"
+          className="px-4 py-2 bg-[#4E6BFF] text-white rounded hover:bg-blue-600 mb-2 sm:mb-0"
         >
           {showAvailable ? "Show All Books" : "Show Available Books"}
         </button>
@@ -96,7 +96,7 @@ const AllBooks = () => {
               <p className="text-sm">Quantity: {book.quantity}</p>
               <button
                 onClick={() => handleUpdateRedirect(book._id)}
-                className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                className="mt-2 px-4 py-2 bg-[#4E6BFF] text-white rounded hover:bg-blue-600"
               >
                 Update
               </button>
@@ -127,7 +127,7 @@ const AllBooks = () => {
                   <td className="border px-4 py-2">
                     <button
                       onClick={() => handleUpdateRedirect(book._id)}
-                      className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                      className="px-4 py-2 bg-[#4E6BFF] text-white rounded hover:bg-blue-600"
                     >
                       Update
                     </button>

@@ -36,7 +36,7 @@ const BannerSlider = () => {
         <div key={index} className="relative w-11/12 mx-auto h-72 lg:h-96">
           <div className="flex flex-col lg:flex-row w-full h-full">
             <div className="lg:w-1/2 flex flex-col justify-center items-center lg:items-start p-4">
-              <h2 className="text-2xl font-bold mb-2">{slide.title}</h2>
+              <h2 className="text-2xl font-bold text-[#4E6BFF] mb-2">{slide.title}</h2>
               <p>{slide.description}</p>
             </div>
             <div className="lg:w-1/2">

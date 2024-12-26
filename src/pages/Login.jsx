@@ -64,7 +64,7 @@ const Login = () => {
       <Helmet>
         <title>Login</title>
       </Helmet>
-      <div className="bg-gray-200 dark:bg-gray-900 text-gray-700 dark:text-gray-100 p-8 rounded-lg shadow-lg w-full max-w-md">
+      <div className="bg-gray-200 text-gray-700 p-8 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-3xl text-[#4E6BFF] font-bold text-center mb-6">
           Sign in to your Account
         </h2>
@@ -79,7 +79,7 @@ const Login = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
-              className="input input-bordered bg-gray-200 dark:bg-gray-900 w-full"
+              className="input input-bordered bg-gray-200 w-full"
               required
             />
           </div>
@@ -91,7 +91,7 @@ const Login = () => {
               type="password"
               name="password"
               placeholder="Enter your password"
-              className="input input-bordered bg-gray-200 dark:bg-gray-900 w-full"
+              className="input input-bordered bg-gray-200 w-full"
               required
             />
           </div>

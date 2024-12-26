@@ -94,7 +94,7 @@ const Register = () => {
       <Helmet>
               <title>Register</title>
             </Helmet>
-      <div className="bg-gray-200 dark:bg-gray-900 text-gray-700 dark:text-white p-8 rounded-lg shadow-lg w-full max-w-md">
+      <div className="bg-gray-200 text-gray-700 p-8 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-3xl font-bold text-center text-[#4E6BFF] mb-6">Create an Account</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
@@ -105,7 +105,7 @@ const Register = () => {
               type="text"
               name="name"
               placeholder="Enter your name"
-              className="input input-bordered bg-gray-200 dark:bg-gray-900 w-full"
+              className="input input-bordered bg-gray-200 w-full"
               required
             />
           </div>
@@ -117,7 +117,7 @@ const Register = () => {
               type="url"
               name="photoURL"
               placeholder="Enter your photo URL"
-              className="input input-bordered bg-gray-200 dark:bg-gray-900 w-full"
+              className="input input-bordered bg-gray-200 w-full"
               required
             />
           </div>
@@ -129,7 +129,7 @@ const Register = () => {
               type="email"
               name="email"
               placeholder="Enter your email"
-              className="input input-bordered bg-gray-200 dark:bg-gray-900 w-full"
+              className="input input-bordered bg-gray-200 w-full"
               required
             />
           </div>
@@ -141,7 +141,7 @@ const Register = () => {
               type="password"
               name="password"
               placeholder="Enter your password"
-              className="input input-bordered bg-gray-200 dark:bg-gray-900 w-full"
+              className="input input-bordered bg-gray-200 w-full"
               required
             />
           </div>
@@ -153,7 +153,7 @@ const Register = () => {
               type="password"
               name="conPassword"
               placeholder="Confirm your password"
-              className="input input-bordered bg-gray-200 dark:bg-gray-900 w-full"
+              className="input input-bordered bg-gray-200 w-full"
               required
             />
           </div>
