@@ -15,6 +15,7 @@ import Register from './pages/Register'
 import Details from './pages/Details'
 import BorrowedBooks from './pages/BorrowedBooks'
 import PrivateRoute from './components/PrivateRoute/PrivateRoute'
+import Error from './components/Error'
 
 
 
@@ -22,6 +23,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    errorElement: <Error></Error>,
     children: [
       {
         path: "/add-book",

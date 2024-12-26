@@ -1,23 +1,28 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const AllBooks = () => {
   const [books, setBooks] = useState([]);
   const [filteredBooks, setFilteredBooks] = useState([]);
   const [showAvailable, setShowAvailable] = useState(false);
   const [view, setView] = useState("card");
+  const [loading, setLoading] = useState(true); 
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchBooks = async () => {
+      setLoading(true); 
       try {
         const { data } = await axiosSecure.get("/books");
         setBooks(data);
         setFilteredBooks(data);
       } catch (error) {
         console.error("Error fetching books:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -40,6 +45,14 @@ const AllBooks = () => {
   const handleUpdateRedirect = (bookId) => {
     navigate(`/update-book/${bookId}`);
   };
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <ClipLoader size={50} color={"#123abc"} loading={loading} />
+      </div>
+    );
+  }
 
   return (
     <div className="w-full max-w-7xl mx-auto p-4">

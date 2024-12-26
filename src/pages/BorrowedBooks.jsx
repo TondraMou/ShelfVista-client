@@ -1,38 +1,43 @@
 import { useEffect, useState } from "react";
-import { useAuth } from "../components/AuthProvider/AuthProvider"; 
+import { useAuth } from "../components/AuthProvider/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const BorrowedBooks = () => {
-  const axiosSecure = useAxiosSecure()
-  const { user, loading } = useAuth(); 
+  const axiosSecure = useAxiosSecure();
+  const { user, loading: authLoading } = useAuth(); 
   const [borrowedBooks, setBorrowedBooks] = useState([]);
+  const [loading, setLoading] = useState(true); 
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (loading) return;
+    if (authLoading) return;
 
     if (!user) {
       navigate("/login");
       return;
     }
 
-    fetchBorrowedBooks(); 
-  }, [loading, user, navigate]);
+    fetchBorrowedBooks();
+  }, [authLoading, user, navigate]);
 
   const fetchBorrowedBooks = async () => {
+    setLoading(true);
     try {
       const { data } = await axiosSecure.get(`/borrowed-books/${user?.email}`);
       setBorrowedBooks(data);
     } catch (error) {
       console.error("Error fetching borrowed books:", error);
+    } finally {
+      setLoading(false); 
     }
   };
 
   const handleReturn = async (bookId) => {
     try {
       const { data } = await axiosSecure.put(`/borrowed-books/return/${bookId}`, {
-        userEmail: user.email, 
+        userEmail: user.email,
       });
 
       if (data.success) {
@@ -48,6 +53,13 @@ const BorrowedBooks = () => {
     }
   };
 
+  if (authLoading || loading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <ClipLoader size={50} color={"#123abc"} loading={authLoading || loading} />
+      </div>
+    );
+  }
 
   return (
     <div className="w-11/12 mx-auto p-4 mb-12">
@@ -58,17 +70,20 @@ const BorrowedBooks = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {borrowedBooks.map((book) => (
             <div key={book._id} className="card shadow-lg p-6">
-             
               <img
-                src={book.bookDetails?.image} 
-                alt={book.bookDetails?.name}   
+                src={book.bookDetails?.image}
+                alt={book.bookDetails?.name}
                 className="w-full h-64 object-cover rounded-lg"
               />
               <div className="mt-4">
                 <h3 className="font-bold">{book.bookDetails?.name}</h3>
-                <p className="text-gray-600">Category: {book.bookDetails?.category}</p> 
-                <p className="text-gray-600">Borrowed Date: {new Date(book.borrowDate).toLocaleDateString()}</p>
-                <p className="text-gray-600">Return Date: {new Date(book.returnDate).toLocaleDateString()}</p>
+                <p className="text-gray-600">Category: {book.bookDetails?.category}</p>
+                <p className="text-gray-600">
+                  Borrowed Date: {new Date(book.borrowDate).toLocaleDateString()}
+                </p>
+                <p className="text-gray-600">
+                  Return Date: {new Date(book.returnDate).toLocaleDateString()}
+                </p>
                 <button
                   onClick={() => handleReturn(book._id)}
                   className="btn btn-danger mt-4"
