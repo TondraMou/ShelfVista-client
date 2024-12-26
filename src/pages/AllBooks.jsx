@@ -1,23 +1,28 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const AllBooks = () => {
   const [books, setBooks] = useState([]);
   const [filteredBooks, setFilteredBooks] = useState([]);
   const [showAvailable, setShowAvailable] = useState(false);
   const [view, setView] = useState("card");
+  const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/books")
-      .then((response) => {
-        setBooks(response.data);
-        setFilteredBooks(response.data); 
-      })
-      .catch((error) => console.error("Error fetching books:", error));
-  }, []);
+    const fetchBooks = async () => {
+      try {
+        const { data } = await axiosSecure.get("/books");
+        setBooks(data);
+        setFilteredBooks(data);
+      } catch (error) {
+        console.error("Error fetching books:", error);
+      }
+    };
+
+    fetchBooks();
+  }, [axiosSecure]);
 
   const handleFilterAvailable = () => {
     setShowAvailable((prev) => !prev);

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const UpdateBook = () => {
   const [book, setBook] = useState({
@@ -13,31 +13,45 @@ const UpdateBook = () => {
   const [categories, setCategories] = useState([]);
   const { id } = useParams();
   const navigate = useNavigate();
+  const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/books/${id}`)
-      .then((response) => {
-        setBook(response.data);
-      })
-      .catch((error) => console.error("Error fetching book details:", error));
+    const fetchBookDetails = async () => {
+      try {
+        const { data } = await axiosSecure.get(`/books/${id}`);
+        setBook(data);
+      } catch (error) {
+        console.error("Error fetching book details:", error);
+      }
+    };
 
-    setCategories(["Comics", "Computers & Tech", "History", "Horror"]);
-  }, [id]);
+    fetchBookDetails();
+
+    setCategories(["Comics", "Computers & Tech", "History", "Horror"]); 
+  }, [id, axiosSecure]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setBook({ ...book, [name]: value });
+    setBook((prevBook) => ({
+      ...prevBook,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    axios.put(`http://localhost:5000/books/${id}`, book)
-      .then((response) => {
+    
+    const updateBook = async () => {
+      try {
+        await axiosSecure.put(`/books/${id}`, book); 
         alert("Book updated successfully!");
         navigate("/books");
-      })
-      .catch((error) => console.error("Error updating book:", error));
+      } catch (error) {
+        console.error("Error updating book:", error);
+      }
+    };
+  
+    updateBook();
   };
 
   return (

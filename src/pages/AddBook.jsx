@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 
 const AddBook = () => {
@@ -12,6 +12,7 @@ const AddBook = () => {
     shortDescription: "",
     rating: "",
   });
+  const axiosSecure = useAxiosSecure();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,10 +22,7 @@ const AddBook = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "http://localhost:5000/books",
-        formData
-      );
+      const response = await axiosSecure.post("/books", formData);
       if (response.data.success) {
         Swal.fire({
           title: "Success!",
@@ -49,7 +47,7 @@ const AddBook = () => {
         icon: "error",
         confirmButtonText: "OK",
       });
-      console.error(error);
+      console.error("Error adding book:", error);
     }
   };
 

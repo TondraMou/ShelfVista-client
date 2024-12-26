@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Modal from "react-modal";
 import { useAuth } from "../components/AuthProvider/AuthProvider"; 
-import axios from "axios";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const Details = () => {
   const { id } = useParams();
@@ -11,6 +11,7 @@ const Details = () => {
   const [book, setBook] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [returnDate, setReturnDate] = useState("");
+  const axiosSecure = useAxiosSecure();
 
   
   useEffect(() => {
@@ -22,47 +23,43 @@ const Details = () => {
     }
 
     
-    axios
-      .get(`http://localhost:5000/book-details/${id}`)
-      .then((response) => {
-        setBook(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching book details:", error);
-      });
+    fetchBookDetails();
   }, [id, loading, user, navigate]);
 
-  const handleBorrow = () => {
+  const fetchBookDetails = async () => {
+    try {
+      const { data } = await axiosSecure.get(`/book-details/${id}`);
+      setBook(data);
+    } catch (error) {
+      console.error("Error fetching book details:", error);
+    }
+  };
+
+  const handleBorrow = async () => {
     if (book.quantity <= 0) {
       alert("No available copies to borrow.");
       return;
     }
   
-    fetch(`http://localhost:5000/borrow-book`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
+    try {
+      const { data } = await axiosSecure.post(`/borrow-book`, {
         bookId: id,
         userName: user.displayName,
         userEmail: user.email,
         returnDate,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.error) {
-          alert(data.error);
-        } else {
-          alert("Book borrowed successfully");
-          setBook(data.updatedBook); 
-          setIsModalOpen(false);
-        }
-      })
-      .catch((error) => {
-        console.error("Error borrowing book:", error);
       });
+  
+      if (data.error) {
+        alert(data.error);
+      } else {
+        alert("Book borrowed successfully");
+        setBook(data.updatedBook);
+        setIsModalOpen(false);
+      }
+    } catch (error) {
+      console.error("Error borrowing book:", error);
+      alert("Failed to borrow the book. Please try again later.");
+    }
   };
 
  
