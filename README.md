@@ -1,8 +1,37 @@
-# React + Vite
+**ShelfVista \- Client Side**  
+---
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The ShelfVista is a comprehensive portal designed to streamline the library management process, making it simple, efficient, and accessible for users.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Features** 
+
+---
+
+1. Comprehensive Authentication system.  
+2. Dynamic Homepage.  
+3. Responsive design.  
+4. Book borrowed System.  
+5. Book details. 
+
+---
+
+**Technologies**
+
+---
+
+1. React  
+2. State Management  
+3. TailwindCSS  
+4. React Toastify  
+5. JSON  
+6. Firebase Authentication  
+7. MongoDB
+
+---
+
+**Live Link**  
+---
+
+[https://shelf-bookm.netlify.app](https://shelf-bookm.netlify.app)
