@@ -23,6 +23,9 @@ const Navbar = () => {
       <NavLink to="/" className="hover:text-blue-500 px-3 py-2 block">
         Home
       </NavLink>
+      <NavLink to="/information" className="hover:text-blue-500 px-3 py-2 block">
+        Information
+      </NavLink>
       {user && (
         <>
           <NavLink to="/books" className="hover:text-blue-500 px-3 py-2 block">
