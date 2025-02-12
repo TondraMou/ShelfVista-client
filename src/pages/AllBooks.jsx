@@ -2,20 +2,21 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import ClipLoader from "react-spinners/ClipLoader";
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from "react-helmet-async";
 
 const AllBooks = () => {
   const [books, setBooks] = useState([]);
   const [filteredBooks, setFilteredBooks] = useState([]);
   const [showAvailable, setShowAvailable] = useState(false);
   const [view, setView] = useState("card");
-  const [loading, setLoading] = useState(true); 
+  const [sortOrder, setSortOrder] = useState(""); // New state for sorting
+  const [loading, setLoading] = useState(true);
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchBooks = async () => {
-      setLoading(true); 
+      setLoading(true);
       try {
         const { data } = await axiosSecure.get("/books");
         setBooks(data);
@@ -43,6 +44,19 @@ const AllBooks = () => {
     setView(event.target.value);
   };
 
+  const handleSortByRating = (event) => {
+    const order = event.target.value;
+    setSortOrder(order);
+
+    if (order === "asc") {
+      setFilteredBooks([...filteredBooks].sort((a, b) => a.rating - b.rating));
+    } else if (order === "desc") {
+      setFilteredBooks([...filteredBooks].sort((a, b) => b.rating - a.rating));
+    } else {
+      setFilteredBooks([...books]); // Reset to original order
+    }
+  };
+
   const handleUpdateRedirect = (bookId) => {
     navigate(`/update-book/${bookId}`);
   };
@@ -57,7 +71,7 @@ const AllBooks = () => {
 
   return (
     <div className="w-full max-w-7xl mx-auto p-4">
-       <Helmet>
+      <Helmet>
         <title>All Books</title>
       </Helmet>
       <h1 className="text-2xl font-bold text-center mb-4">All Books</h1>
@@ -69,6 +83,16 @@ const AllBooks = () => {
         >
           {showAvailable ? "Show All Books" : "Show Available Books"}
         </button>
+
+        <select
+          onChange={handleSortByRating}
+          value={sortOrder}
+          className="px-4 py-2 border rounded mb-2 sm:mb-0"
+        >
+          <option value="">Sort by Rating</option>
+          <option value="asc">Low to High</option>
+          <option value="desc">High to Low</option>
+        </select>
 
         <select
           onChange={handleToggleView}
