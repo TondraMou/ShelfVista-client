@@ -44,7 +44,7 @@ const AboutUs = () => {
             Streamlining Book Tracking, Borrowing, and Management to Enhance Efficiency, Accessibility, and User Experience for Libraries of All Sizes.
             </p>
             <a
-              href="/"
+              href="/about"
               className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 shadow-lg"
             >
               More About Us

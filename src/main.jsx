@@ -18,6 +18,7 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute'
 import Error from './components/Error'
 import { HelmetProvider } from 'react-helmet-async';
 import Information from './pages/Information'
+import AboutUs from './pages/AboutUs'
 
 
 
@@ -66,6 +67,10 @@ const router = createBrowserRouter([
       {
         path: "/information",
         element: <Information></Information>
+      },
+      {
+        path: "/about",
+        element: <AboutUs></AboutUs>
       }
     ]
   }
