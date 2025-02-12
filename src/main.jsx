@@ -17,6 +17,7 @@ import BorrowedBooks from './pages/BorrowedBooks'
 import PrivateRoute from './components/PrivateRoute/PrivateRoute'
 import Error from './components/Error'
 import { HelmetProvider } from 'react-helmet-async';
+import Information from './pages/Information'
 
 
 
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
       {
         path: "/borrowed-books",
         element: <PrivateRoute><BorrowedBooks></BorrowedBooks></PrivateRoute>
+      },
+      {
+        path: "/information",
+        element: <Information></Information>
       }
     ]
   }
