@@ -105,28 +105,32 @@ const AllBooks = () => {
       </div>
 
       {view === "card" ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {filteredBooks.map((book) => (
-            <div key={book._id} className="border p-4 rounded-lg shadow-lg">
-              <img
-                src={book.image}
-                alt={book.name}
-                className="w-full h-64 object-cover mb-2"
-              />
-              <h2 className="text-lg font-semibold">{book.name}</h2>
-              <p className="text-sm">Author: {book.authorName}</p>
-              <p className="text-sm">Category: {book.category}</p>
-              <p className="text-sm">Rating: {book.rating}</p>
-              <p className="text-sm">Quantity: {book.quantity}</p>
-              <button
-                onClick={() => handleUpdateRedirect(book._id)}
-                className="mt-2 px-4 py-2 bg-[#4E6BFF] text-white rounded hover:bg-blue-600"
-              >
-                Update
-              </button>
-            </div>
-          ))}
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    {filteredBooks.map((book) => (
+      <div key={book._id} className="border p-4 rounded-lg shadow-lg flex flex-col justify-between h-full">
+        <div>
+          <img
+            src={book.image}
+            alt={book.name}
+            className="w-full h-64 object-cover mb-2"
+          />
+          <h2 className="text-lg font-semibold">{book.name}</h2>
+          <p className="text-sm">Author: {book.authorName}</p>
+          <p className="text-sm">Category: {book.category}</p>
+          <p className="text-sm">Rating: {book.rating}</p>
+          <p className="text-sm">Quantity: {book.quantity}</p>
         </div>
+        <div className="mt-auto">
+          <button
+            onClick={() => handleUpdateRedirect(book._id)}
+            className="mt-2 px-4 py-2 bg-[#4E6BFF] text-white rounded hover:bg-blue-600 w-full"
+          >
+            Update
+          </button>
+        </div>
+      </div>
+    ))}
+  </div>
       ) : (
         <div className="overflow-x-auto">
           <table className="min-w-full table-auto">
