@@ -26,6 +26,9 @@ const Navbar = () => {
       <NavLink to="/information" className="hover:text-blue-500 px-3 py-2 block">
         Information
       </NavLink>
+      <NavLink to="/help" className="hover:text-blue-500 px-3 py-2 block">
+        Help
+      </NavLink>
       {user && (
         <>
           <NavLink to="/books" className="hover:text-blue-500 px-3 py-2 block">
@@ -53,11 +56,11 @@ const Navbar = () => {
               </Link>
             </div>
 
-            <div className="hidden md:flex items-center justify-center flex-1 space-x-4">
+            <div className="hidden lg:flex items-center justify-center flex-1 space-x-4">
               {navLinks}
             </div>
 
-            <div className="hidden md:flex items-center space-x-4">
+            <div className="hidden lg:flex items-center space-x-4">
               {!user ? (
                 <>
                   <NavLink
@@ -96,7 +99,7 @@ const Navbar = () => {
               )}
             </div>
 
-            <div className="md:hidden flex items-center">
+            <div className="lg:hidden flex items-center">
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="text-black focus:outline-none"
@@ -108,7 +111,7 @@ const Navbar = () => {
         </div>
 
         {isOpen && (
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 flex flex-col items-start">
               {navLinks}
             </div>

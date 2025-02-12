@@ -19,6 +19,7 @@ import Error from './components/Error'
 import { HelmetProvider } from 'react-helmet-async';
 import Information from './pages/Information'
 import AboutUs from './pages/AboutUs'
+import HelpOnUsagePage from './pages/HelpOnUsagePage'
 
 
 
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
       {
         path: "/about",
         element: <AboutUs></AboutUs>
+      },
+      {
+        path: "/help",
+        element: <HelpOnUsagePage></HelpOnUsagePage>
       }
     ]
   }
