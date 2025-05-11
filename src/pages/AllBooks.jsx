@@ -9,7 +9,7 @@ const AllBooks = () => {
   const [filteredBooks, setFilteredBooks] = useState([]);
   const [showAvailable, setShowAvailable] = useState(false);
   const [view, setView] = useState("card");
-  const [sortOrder, setSortOrder] = useState(""); // New state for sorting
+  const [sortOrder, setSortOrder] = useState(""); 
   const [loading, setLoading] = useState(true);
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
@@ -53,7 +53,7 @@ const AllBooks = () => {
     } else if (order === "desc") {
       setFilteredBooks([...filteredBooks].sort((a, b) => b.rating - a.rating));
     } else {
-      setFilteredBooks([...books]); // Reset to original order
+      setFilteredBooks([...books]);
     }
   };
 
@@ -79,7 +79,7 @@ const AllBooks = () => {
       <div className="flex flex-wrap justify-between mb-4">
         <button
           onClick={handleFilterAvailable}
-          className="px-4 py-2 bg-[#4E6BFF] text-white rounded hover:bg-blue-600 mb-2 sm:mb-0"
+          className="px-4 py-2 bg-orange-600 text-white rounded hover:bg-orange-600 mb-2 sm:mb-0"
         >
           {showAvailable ? "Show All Books" : "Show Available Books"}
         </button>
@@ -123,7 +123,7 @@ const AllBooks = () => {
         <div className="mt-auto">
           <button
             onClick={() => handleUpdateRedirect(book._id)}
-            className="mt-2 px-4 py-2 bg-[#4E6BFF] text-white rounded hover:bg-blue-600 w-full"
+            className="mt-2 px-4 py-2 border-2 border-[#4E6BFF] text-[#4E6BFF] rounded hover:bg-[#4E6BFF] hover:text-white transition w-full"
           >
             Update
           </button>
@@ -155,7 +155,7 @@ const AllBooks = () => {
                   <td className="border px-4 py-2">
                     <button
                       onClick={() => handleUpdateRedirect(book._id)}
-                      className="px-4 py-2 bg-[#4E6BFF] text-white rounded hover:bg-blue-600"
+                      className="mt-2 px-4 py-2 border-2 border-[#4E6BFF] text-[#4E6BFF] rounded hover:bg-[#4E6BFF] hover:text-white transition w-full"
                     >
                       Update
                     </button>
