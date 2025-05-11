@@ -22,7 +22,7 @@ const Categories = () => {
       {categories.map((category) => (
         <Fade key={category._id} triggerOnce delay={200}>
           <div
-            className="card shadow-lg p-4 text-center cursor-pointer flex flex-col items-center justify-center"
+            className="card shadow-lg p-4 text-center cursor-pointer flex flex-col items-center min-h-[220px] justify-center"
             onClick={() => handleCategoryClick(category.name)}
           >
             <img
