@@ -64,17 +64,17 @@ const Navbar = () => {
               {!user ? (
                 <>
                   <NavLink
-                    to="/login"
-                    className="btn btn-outline btn-info px-3 py-2"
-                  >
-                    Login
-                  </NavLink>
-                  <NavLink
-                    to="/register"
-                    className="btn btn-outline btn-info px-3 py-2"
-                  >
-                    Sign Up
-                  </NavLink>
+  to="/login"
+  className="px-4 py-2 border-2 border-[#4E6BFF] text-[#4E6BFF] rounded-md hover:bg-[#4E6BFF] hover:text-white transition"
+>
+  Login
+</NavLink>
+<NavLink
+  to="/register"
+  className="px-4 py-2 border-2 border-[#4E6BFF] text-[#4E6BFF] rounded-md hover:bg-[#4E6BFF] hover:text-white transition"
+>
+  Sign Up
+</NavLink>
                 </>
               ) : (
                 <div className="flex items-center space-x-4">
@@ -91,7 +91,7 @@ const Navbar = () => {
 
                   <button
                     onClick={handleSignOut}
-                    className="btn btn-outline btn-info px-3 py-2"
+                    className="px-4 py-2 border-2 border-[#4E6BFF] text-[#4E6BFF] rounded-md hover:bg-[#4E6BFF] hover:text-white transition"
                   >
                     Logout
                   </button>
@@ -120,14 +120,14 @@ const Navbar = () => {
                 <>
                   <NavLink
                     to="/login"
-                    className="text-gray-200 btn btn-outline btn-info px-3 py-2"
+                    className="px-4 py-2 border-2 border-[#4E6BFF] text-[#4E6BFF] rounded-md hover:bg-[#4E6BFF] hover:text-white transition"
                     onClick={() => setIsOpen(false)}
                   >
                     Login
                   </NavLink>
                   <NavLink
                     to="/register"
-                    className="text-gray-200 btn btn-outline btn-info px-3 py-2"
+                    className="px-4 py-2 border-2 border-[#4E6BFF] text-[#4E6BFF] rounded-md hover:bg-[#4E6BFF] hover:text-white transition"
                     onClick={() => setIsOpen(false)}
                   >
                     Sign Up
@@ -139,7 +139,7 @@ const Navbar = () => {
                     handleSignOut();
                     setIsOpen(false);
                   }}
-                  className="btn btn-outline btn-info px-3 py-2"
+                  className="px-4 py-2 border-2 border-[#4E6BFF] text-[#4E6BFF] rounded-md hover:bg-[#4E6BFF] hover:text-white transition"
                 >
                   Logout
                 </button>
