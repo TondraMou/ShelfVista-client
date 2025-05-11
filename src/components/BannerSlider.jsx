@@ -42,7 +42,7 @@ const BannerSlider = () => {
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
                 to="/help"
-                className="px-6 py-2 border-2 bg-orange-600 text-white font-semibold rounded-full shadow-lg"
+                className="px-6 py-2 border-2 border-orange-600 bg-orange-600 text-white font-semibold rounded-full shadow-lg"
               >
                 Learn More
               </Link>
