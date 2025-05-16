@@ -23,9 +23,9 @@ const Books = () => {
         <div key={book._id} className="card shadow-lg p-4">
           <img src={book.image} alt={book.name} className="w-full h-40 object-cover mb-4" />
           <h2 className="text-xl font-bold">{book.name}</h2>
-          <p className="text-gray-600">Author: {book.authorName}</p>
-          <p className="text-gray-600">Category: {book.category}</p>
-          <p className="text-gray-600">Quantity: {book.quantity}</p>
+          <p className="">Author: {book.authorName}</p>
+          <p className="">Category: {book.category}</p>
+          <p className="">Quantity: {book.quantity}</p>
           <ReactStars value={book.rating} edit={false} />
           <Link to={`/book-details/${book._id}`}>
             <button className="btn btn-primary mt-4">Details</button>

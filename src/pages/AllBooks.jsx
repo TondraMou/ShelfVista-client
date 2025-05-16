@@ -87,7 +87,7 @@ const AllBooks = () => {
         <select
           onChange={handleSortByRating}
           value={sortOrder}
-          className="px-4 py-2 border rounded mb-2 sm:mb-0"
+          className="px-4 py-2 border bg-transparent rounded mb-2 sm:mb-0"
         >
           <option value="">Sort by Rating</option>
           <option value="asc">Low to High</option>
@@ -97,7 +97,7 @@ const AllBooks = () => {
         <select
           onChange={handleToggleView}
           value={view}
-          className="px-4 py-2 border rounded mb-2 sm:mb-0"
+          className="px-4 py-2 border bg-transparent rounded mb-2 sm:mb-0"
         >
           <option value="card">Card View</option>
           <option value="table">Table View</option>

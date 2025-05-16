@@ -81,11 +81,11 @@ const BorrowedBooks = () => {
               />
               <div className="mt-4">
                 <h3 className="font-bold">{book.bookDetails?.name}</h3>
-                <p className="text-gray-600">Category: {book.bookDetails?.category}</p>
-                <p className="text-gray-600">
+                <p className="">Category: {book.bookDetails?.category}</p>
+                <p className="">
                   Borrowed Date: {new Date(book.borrowDate).toLocaleDateString()}
                 </p>
-                <p className="text-gray-600">
+                <p className="">
                   Return Date: {new Date(book.returnDate).toLocaleDateString()}
                 </p>
                 <button

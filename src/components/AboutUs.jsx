@@ -6,7 +6,7 @@ const AboutUs = () => {
       
       <div className="text-center mb-12">
         <h3 className="text-xl font-semibold uppercase text-[#4E6BFF]">About Us</h3>
-        <h2 className="text-lg text-gray-700 leading-tight mt-2">
+        <h2 className="text-lg leading-tight mt-2">
           Empowering Libraries with Seamless Management Solutions
         </h2>
       </div>
@@ -24,7 +24,7 @@ const AboutUs = () => {
 
         
         <div className="space-y-6 text-center md:text-left">
-          <p className="text-2xl text-gray-700">
+          <p className="text-2xl">
             Streamlining book tracking, borrowing, and management to enhance efficiency,
             accessibility, and user experience for libraries of all sizes.
           </p>

@@ -69,7 +69,7 @@ const UpdateBook = () => {
             name="image"
             value={book.image}
             onChange={handleChange}
-            className="mt-1 w-full p-2 border"
+            className="mt-1 w-full bg-transparent p-2 border"
           />
         </div>
         <div>
@@ -79,7 +79,7 @@ const UpdateBook = () => {
             name="name"
             value={book.name}
             onChange={handleChange}
-            className="mt-1 w-full p-2 border"
+            className="mt-1 w-full bg-transparent p-2 border"
           />
         </div>
         <div>
@@ -89,7 +89,7 @@ const UpdateBook = () => {
             name="authorName"
             value={book.authorName}
             onChange={handleChange}
-            className="mt-1 w-full p-2 border"
+            className="mt-1 w-full bg-transparent p-2 border"
           />
         </div>
         <div>
@@ -98,7 +98,7 @@ const UpdateBook = () => {
             name="category"
             value={book.category}
             onChange={handleChange}
-            className="mt-1 w-full p-2 border"
+            className="mt-1 w-full bg-transparent p-2 border"
           >
             {categories.map((category, index) => (
               <option key={index} value={category}>{category}</option>
@@ -114,7 +114,7 @@ const UpdateBook = () => {
             onChange={handleChange}
             min="1"
             max="5"
-            className="mt-1 w-full p-2 border"
+            className="mt-1 w-full bg-transparent p-2 border"
           />
         </div>
         <button

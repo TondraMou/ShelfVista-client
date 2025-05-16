@@ -86,11 +86,11 @@ const Details = () => {
        
         <div className="w-full md:w-2/3 md:pl-6">
           <h2 className="text-2xl font-bold mb-2">{book.name}</h2>
-          <p className="text-gray-600">Author: {book.authorName}</p>
-          <p className="text-gray-600">Category: {book.category}</p>
-          <p className="text-gray-600">Quantity: {book.quantity}</p>
-          <p className="text-gray-600">Rating: {book.rating}</p>
-          <p className="text-gray-600">Description: {book.shortDescription}</p>
+          <p className="">Author: {book.authorName}</p>
+          <p className="">Category: {book.category}</p>
+          <p className="">Quantity: {book.quantity}</p>
+          <p className="">Rating: {book.rating}</p>
+          <p className="">Description: {book.shortDescription}</p>
           <button
             className="btn btn-primary mt-4"
             onClick={() => setIsModalOpen(true)}

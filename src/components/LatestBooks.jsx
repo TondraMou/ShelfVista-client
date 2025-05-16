@@ -21,7 +21,7 @@ const LatestBooks = () => {
     <section className="py-16 px-6 w-11/12 mx-auto max-w-7xl">
       <div className="space-y-6 text-center mb-12">
         <h2 className="text-4xl font-bold">Explore the Latest Arrivals</h2>
-        <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+        <p className="text-lg max-w-3xl mx-auto">
           Discover our newest collection of books. Handpicked for your reading pleasure, these books span various genres to captivate your imagination.
         </p>
       </div>
