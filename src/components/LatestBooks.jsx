@@ -43,7 +43,7 @@ const LatestBooks = () => {
       <div className="text-center">
         <a
           href="/books"
-          className="inline-block border-2 border-orange-600 text-orange-600 px-6 py-3 rounded-lg hover:bg-orange-600 hover:text-white transition duration-300 shadow-md"
+          className="inline-block border-2 border-[#4E6BFF] text-[#4E6BFF] px-6 py-3 rounded-lg hover:bg-[#4E6BFF] hover:text-white transition duration-300 shadow-md"
         >
           Browse All Books
         </a>
